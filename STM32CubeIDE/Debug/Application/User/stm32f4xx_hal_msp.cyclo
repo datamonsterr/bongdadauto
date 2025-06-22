@@ -1,0 +1,15 @@
+E:/TouchGFXProjects/bongdadauto/Core/Src/stm32f4xx_hal_msp.c:65:6:HAL_MspInit	1
+E:/TouchGFXProjects/bongdadauto/Core/Src/stm32f4xx_hal_msp.c:90:6:HAL_ADC_MspInit	3
+E:/TouchGFXProjects/bongdadauto/Core/Src/stm32f4xx_hal_msp.c:155:6:HAL_ADC_MspDeInit	2
+E:/TouchGFXProjects/bongdadauto/Core/Src/stm32f4xx_hal_msp.c:193:6:HAL_CRC_MspInit	2
+E:/TouchGFXProjects/bongdadauto/Core/Src/stm32f4xx_hal_msp.c:216:6:HAL_CRC_MspDeInit	2
+E:/TouchGFXProjects/bongdadauto/Core/Src/stm32f4xx_hal_msp.c:238:6:HAL_DMA2D_MspInit	2
+E:/TouchGFXProjects/bongdadauto/Core/Src/stm32f4xx_hal_msp.c:264:6:HAL_DMA2D_MspDeInit	2
+E:/TouchGFXProjects/bongdadauto/Core/Src/stm32f4xx_hal_msp.c:289:6:HAL_I2C_MspInit	2
+E:/TouchGFXProjects/bongdadauto/Core/Src/stm32f4xx_hal_msp.c:338:6:HAL_I2C_MspDeInit	2
+E:/TouchGFXProjects/bongdadauto/Core/Src/stm32f4xx_hal_msp.c:369:6:HAL_LTDC_MspInit	3
+E:/TouchGFXProjects/bongdadauto/Core/Src/stm32f4xx_hal_msp.c:495:6:HAL_LTDC_MspDeInit	2
+E:/TouchGFXProjects/bongdadauto/Core/Src/stm32f4xx_hal_msp.c:557:6:HAL_SPI_MspInit	2
+E:/TouchGFXProjects/bongdadauto/Core/Src/stm32f4xx_hal_msp.c:595:6:HAL_SPI_MspDeInit	2
+E:/TouchGFXProjects/bongdadauto/Core/Src/stm32f4xx_hal_msp.c:727:6:HAL_SDRAM_MspInit	2
+E:/TouchGFXProjects/bongdadauto/Core/Src/stm32f4xx_hal_msp.c:813:6:HAL_SDRAM_MspDeInit	2

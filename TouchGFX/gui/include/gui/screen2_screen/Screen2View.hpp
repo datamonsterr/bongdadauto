@@ -11,6 +11,13 @@ public:
     virtual ~Screen2View() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+<<<<<<< HEAD
+
+    //Display Time
+    void displayCounter(int newCount);
+protected:
+    touchgfx::Unicode::UnicodeChar timeCountBuffer[3];
+=======
     virtual void handleTickEvent();
     
     // Method to handle joystick data from queue
@@ -55,6 +62,7 @@ protected:
     static const float JUMP_VELOCITY;
     static const float GRAVITY;
     static const uint16_t JUMP_THRESHOLD = 500;  // Sensitivity for jump trigger (lower = more sensitive)
+>>>>>>> origin/main
 };
 
 #endif // SCREEN2VIEW_HPP

@@ -1,0 +1,4 @@
+E:/TouchGFXProjects/bongdadauto/TouchGFX/gui/src/model/Model.cpp:4:1:Model::Model()	0	static
+E:/TouchGFXProjects/bongdadauto/TouchGFX/gui/src/model/Model.cpp:9:6:void Model::tick()	0	static
+E:/TouchGFXProjects/bongdadauto/TouchGFX/gui/src/model/Model.cpp:34:6:void Model::startCounting()	0	static
+E:/TouchGFXProjects/bongdadauto/TouchGFX/gui/src/model/Model.cpp:47:6:void Model::stopCounting()	0	static
