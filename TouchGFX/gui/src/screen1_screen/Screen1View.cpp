@@ -1,9 +1,4 @@
 #include <gui/screen1_screen/Screen1View.hpp>
-#include "cmsis_os.h"
-#include "joystick_data.h"
-
-// Extern declaration for the joystick data queue
-extern osMessageQueueId_t joystickDataQueue;
 
 Screen1View::Screen1View()
 {
@@ -19,6 +14,7 @@ void Screen1View::tearDownScreen()
 {
     Screen1ViewBase::tearDownScreen();
 }
+<<<<<<< HEAD
 
 void Screen1View::startNewGame()
 {
@@ -46,3 +42,5 @@ void Screen1View::handleJoystickData()
         // For example: update UI elements based on joystick values
     }
 }
+=======
+>>>>>>> origin/main
