@@ -14,7 +14,6 @@ public:
     {
         model = m;
     }
-    virtual void updateCounter(int newCount) {}
 protected:
     Model* model;
 };

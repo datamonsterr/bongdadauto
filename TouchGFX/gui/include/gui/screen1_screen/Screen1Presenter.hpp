@@ -27,9 +27,6 @@ public:
 
     virtual ~Screen1Presenter() {}
 
-    // Method to start counting in the model
-    void startGameCounting();
-
 private:
     Screen1Presenter();
 
