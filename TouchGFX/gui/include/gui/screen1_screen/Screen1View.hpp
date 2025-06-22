@@ -12,12 +12,6 @@ public:
     virtual void setupScreen();
     virtual void tearDownScreen();
     
-    // Override from Screen1ViewBase - called when startGameButton is clicked
-    virtual void startNewGame() override;
-    
-    // Method to handle joystick data from queue
-    void handleJoystickData();
-    
 protected:
 };
 
