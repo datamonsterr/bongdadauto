@@ -9,7 +9,11 @@ Screen2Presenter::Screen2Presenter(Screen2View& v)
 
 void Screen2Presenter::activate()
 {
-
+    // Start the countdown when Screen2 becomes active
+    if (model)
+    {
+        model->startCounting();
+    }
 }
 
 void Screen2Presenter::deactivate()

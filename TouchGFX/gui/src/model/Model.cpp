@@ -13,7 +13,7 @@ void Model::tick()
 		return;
 		
 	tickCounter++;
-	// Giả sử màn hình 60Hz, 60 ticks là 1 giây
+	// STM32F429 runs at ~24Hz, 24 ticks is 1 second
 	if (tickCounter % 60 == 0)
 	{
 		// Tăng biến đếm và quay vòng

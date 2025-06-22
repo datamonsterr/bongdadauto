@@ -17,8 +17,10 @@ Screen2View::Screen2View()
 void Screen2View::setupScreen()
 {
     Screen2ViewBase::setupScreen();
-    timeCount.invalidate();
-
+    
+    // Initialize counter display with starting value
+    displayCounter(90);
+    
     // Initialize player positions based on their initial setup
     // From Screen2ViewBase.cpp: playerLeft is at (55, 146), playerRight is at (236, 146)
     playerLeftX = 55;
@@ -303,6 +305,9 @@ void Screen2View::playerRightMoveBackward()
 void Screen2View::displayCounter(int newCount)
 {
     Unicode::snprintf(timeCountBuffer, 3, "%d", newCount);
-
+    timeCount.setWildcard(timeCountBuffer);  // Set the wildcard text
     timeCount.invalidate();
+    
+    // Debug: Force immediate update to ensure display refresh
+    timeCount.resizeToCurrentText();
 }
