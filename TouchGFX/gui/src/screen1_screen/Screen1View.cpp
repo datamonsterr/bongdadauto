@@ -26,6 +26,16 @@ void Screen1View::startNewGame()
     }
 }
 
+void Screen1View::startNewGame()
+{
+    // This method is called when startGameButton is clicked
+    // Tell the presenter to start counting
+    if (presenter)
+    {
+        presenter->startGameCounting();
+    }
+}
+
 void Screen1View::handleJoystickData()
 {
     JoystickData_t joystick_data;

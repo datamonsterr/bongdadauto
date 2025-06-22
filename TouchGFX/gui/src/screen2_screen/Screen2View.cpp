@@ -18,35 +18,7 @@ Screen2View::Screen2View()
 void Screen2View::setupScreen()
 {
     Screen2ViewBase::setupScreen();
-<<<<<<< HEAD
     timeCount.setWildcard(timeCountBuffer);
-=======
-    
-    // Initialize player positions based on their initial setup
-    // From Screen2ViewBase.cpp: playerLeft is at (55, 146), playerRight is at (236, 146)
-    playerLeftX = 55;
-    playerLeftY = GROUND_LEVEL;
-    playerRightX = 236;
-    playerRightY = GROUND_LEVEL;
-    
-    // Initialize previous positions
-    prevPlayerLeftX = playerLeftX;
-    prevPlayerLeftY = playerLeftY;
-    prevPlayerRightX = playerRightX;
-    prevPlayerRightY = playerRightY;
-    
-    // Initialize physics variables
-    playerLeftVelocityY = 0.0f;
-    playerRightVelocityY = 0.0f;
-    playerLeftOnGround = true;
-    playerRightOnGround = true;
-    playerLeftJumping = false;
-    playerRightJumping = false;
-    
-    // Initialize previous joystick states (only for jumping)
-    prevJ1UpPressed = false;
-    prevJ2UpPressed = false;
->>>>>>> origin/main
 }
 
 void Screen2View::displayCounter(int newCount)
