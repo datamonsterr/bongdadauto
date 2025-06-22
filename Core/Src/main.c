@@ -1140,7 +1140,7 @@ void StartDefaultTask(void *argument)
     // joystick_data.j2_y contains Joystick 2 Y-axis value (0-4095)
     // (Switch values are set to 0 since not used)
     
-    osDelay(100);
+    osDelay(42);  // ~24 FPS (optimal for STM32F429)
   }
   /* USER CODE END 5 */
 }
