@@ -16,3 +16,11 @@ void Screen1Presenter::deactivate()
 {
 
 }
+void Screen1Presenter::startGameCounting()
+{
+    // Start counting in the model
+    if (model)
+    {
+        model->startCounting();
+    }
+}

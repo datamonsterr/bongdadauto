@@ -26,8 +26,11 @@ public:
     
     // Physics update method
     void updatePhysics();
-    
+
+    //Display Time
+    void displayCounter(int newCount);
 protected:
+    touchgfx::Unicode::UnicodeChar timeCountBuffer[3];
     // Game constants
     static const int GROUND_LEVEL = 146;
     static const int LEFT_BOUND = 0;

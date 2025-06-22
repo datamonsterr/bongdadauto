@@ -27,6 +27,9 @@ public:
 
     virtual ~Screen2Presenter() {}
 
+    // Override from ModelListener to handle counter updates
+    virtual void updateCounter(int newCount) override;
+
 private:
     Screen2Presenter();
 

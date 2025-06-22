@@ -16,3 +16,8 @@ void Screen2Presenter::deactivate()
 {
 
 }
+void Screen2Presenter::updateCounter(int newCount)
+{
+    // Forward the counter update to the view
+    view.displayCounter(newCount);
+}
