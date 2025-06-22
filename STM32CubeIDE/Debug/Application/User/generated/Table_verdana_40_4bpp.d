@@ -1,5 +1,5 @@
 Application/User/generated/Table_verdana_40_4bpp.o: \
- C:/TouchGFXProjects/khoidaumoi/TouchGFX/generated/fonts/src/Table_verdana_40_4bpp.cpp \
+ E:/TouchGFXProjects/bongdadauto/TouchGFX/generated/fonts/src/Table_verdana_40_4bpp.cpp \
  ../../TouchGFX/generated/fonts/include/fonts/GeneratedFont.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/ConstFont.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Font.hpp \

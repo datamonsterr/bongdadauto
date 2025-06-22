@@ -1,5 +1,5 @@
 Application/User/generated/FontCache.o: \
- C:/TouchGFXProjects/khoidaumoi/TouchGFX/generated/fonts/src/FontCache.cpp \
+ E:/TouchGFXProjects/bongdadauto/TouchGFX/generated/fonts/src/FontCache.cpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/TextProvider.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Font.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Unicode.hpp \

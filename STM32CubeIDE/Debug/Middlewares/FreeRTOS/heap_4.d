@@ -1,5 +1,5 @@
 Middlewares/FreeRTOS/heap_4.o: \
- C:/TouchGFXProjects/khoidaumoi/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c \
+ E:/TouchGFXProjects/bongdadauto/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../../Core/Inc/FreeRTOSConfig.h \
  ../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
