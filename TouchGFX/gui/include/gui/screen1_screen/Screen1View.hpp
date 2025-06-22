@@ -11,6 +11,10 @@ public:
     virtual ~Screen1View() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+    
+    // Method to handle joystick data from queue
+    void handleJoystickData();
+    
 protected:
 };
 

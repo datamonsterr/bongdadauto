@@ -97,6 +97,9 @@ const osThreadAttr_t GUI_Task_attributes = {
 uint8_t isRevD = 0; /* Applicable only for STM32F429I DISCOVERY REVD and above */
 uint16_t adc_values[4];
 
+/* FreeRTOS Queue for joystick data */
+osMessageQueueId_t joystickDataQueue;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -222,6 +225,13 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
+  
+  /* Create joystick data queue */
+  joystickDataQueue = osMessageQueueNew(10, sizeof(JoystickData_t), NULL);
+  if (joystickDataQueue == NULL) {
+    Error_Handler();
+  }
+  
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
@@ -1115,6 +1125,13 @@ void StartDefaultTask(void *argument)
   {
     // Read joystick data
     Joystick_ReadData(&joystick_data);
+    
+    // Send joystick data to queue
+    osStatus_t status = osMessageQueuePut(joystickDataQueue, &joystick_data, 0, 0);
+    if (status != osOK) {
+      // Handle queue full or error (optional)
+      // Could log error or handle it as needed
+    }
     
     // Example: You can now use the joystick X/Y axis data
     // joystick_data.j1_x contains Joystick 1 X-axis value (0-4095)

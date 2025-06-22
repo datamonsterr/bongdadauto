@@ -1,4 +1,9 @@
 #include <gui/screen1_screen/Screen1View.hpp>
+#include "cmsis_os.h"
+#include "joystick_data.h"
+
+// Extern declaration for the joystick data queue
+extern osMessageQueueId_t joystickDataQueue;
 
 Screen1View::Screen1View()
 {
@@ -13,4 +18,21 @@ void Screen1View::setupScreen()
 void Screen1View::tearDownScreen()
 {
     Screen1ViewBase::tearDownScreen();
+}
+
+void Screen1View::handleJoystickData()
+{
+    JoystickData_t joystick_data;
+    
+    // Try to get joystick data from queue (non-blocking)
+    osStatus_t status = osMessageQueueGet(joystickDataQueue, &joystick_data, NULL, 0);
+    
+    if (status == osOK) {
+        // Successfully received joystick data
+        // Handle the joystick data here
+        // joystick_data.j1_x, joystick_data.j1_y, joystick_data.j2_x, joystick_data.j2_y
+        
+        // TODO: Add your joystick handling logic here
+        // For example: update UI elements based on joystick values
+    }
 }
