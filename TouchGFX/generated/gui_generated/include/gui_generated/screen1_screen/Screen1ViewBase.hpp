@@ -8,6 +8,8 @@
 #include <mvp/View.hpp>
 #include <gui/screen1_screen/Screen1Presenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/widgets/Button.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 
 class Screen1ViewBase : public touchgfx::View<Screen1Presenter>
 {
@@ -15,6 +17,14 @@ public:
     Screen1ViewBase();
     virtual ~Screen1ViewBase();
     virtual void setupScreen();
+
+    /*
+     * Virtual Action Handlers
+     */
+    virtual void startNewGame()
+    {
+        // Override and implement this function in Screen1
+    }
 
 protected:
     FrontendApplication& application() {
@@ -25,8 +35,20 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
+    touchgfx::Button startGameButton;
+    touchgfx::TextAreaWithTwoWildcards textArea1;
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Screen1ViewBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 
