@@ -25,6 +25,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "Components/ili9341/ili9341.h"
+#include "joystick_data.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -93,6 +95,8 @@ const osThreadAttr_t GUI_Task_attributes = {
 };
 /* USER CODE BEGIN PV */
 uint8_t isRevD = 0; /* Applicable only for STM32F429I DISCOVERY REVD and above */
+uint16_t adc_values[4];
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -137,6 +141,9 @@ void                      IOE_Delay(uint32_t Delay);
 void                      IOE_Write(uint8_t Addr, uint8_t Reg, uint8_t Value);
 uint8_t                   IOE_Read(uint8_t Addr, uint8_t Reg);
 uint16_t                  IOE_ReadMultiple(uint8_t Addr, uint8_t Reg, uint8_t *pBuffer, uint16_t Length);
+
+/* Joystick functions */
+void                      Joystick_ReadData(JoystickData_t *joystick_data);
 
 /* USER CODE END PFP */
 
@@ -189,6 +196,12 @@ int main(void)
   /* Call PreOsInit function */
   MX_TouchGFX_PreOSInit();
   /* USER CODE BEGIN 2 */
+  
+  // Start ADC with DMA
+  if (HAL_ADC_Start_DMA(&hadc1, (uint32_t*)adc_values, 4) != HAL_OK)
+  {
+    Error_Handler();
+  }
 
   /* USER CODE END 2 */
 
@@ -1057,6 +1070,32 @@ void LCD_Delay(uint32_t Delay)
   HAL_Delay(Delay);
 }
 
+/**
+  * @brief  Read joystick data from ADC (X and Y axes only)
+  * @param  joystick_data: Pointer to JoystickData_t structure
+  * @retval None
+  */
+void Joystick_ReadData(JoystickData_t *joystick_data)
+{
+  if (joystick_data == NULL) return;
+  
+  /* Read ADC values (DMA automatically updates adc_values array) */
+  /* Mapping: 
+   * adc_values[0] -> Joystick 1 X-axis (ADC_CHANNEL_0 - PA0)
+   * adc_values[1] -> Joystick 1 Y-axis (ADC_CHANNEL_1 - PA1)
+   * adc_values[2] -> Joystick 2 X-axis (ADC_CHANNEL_13 - PC3)
+   * adc_values[3] -> Joystick 2 Y-axis (ADC_CHANNEL_14 - PC4)
+   */
+  joystick_data->j1_x = adc_values[0];
+  joystick_data->j1_y = adc_values[1];
+  joystick_data->j2_x = adc_values[2];
+  joystick_data->j2_y = adc_values[3];
+  
+  /* Set switch values to 0 since not using switches */
+  joystick_data->j1_sw = 0;
+  joystick_data->j2_sw = 0;
+}
+
 /* USER CODE END 4 */
 
 /* USER CODE BEGIN Header_StartDefaultTask */
@@ -1069,9 +1108,21 @@ void LCD_Delay(uint32_t Delay)
 void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
+  JoystickData_t joystick_data;
+  
   /* Infinite loop */
   for(;;)
   {
+    // Read joystick data
+    Joystick_ReadData(&joystick_data);
+    
+    // Example: You can now use the joystick X/Y axis data
+    // joystick_data.j1_x contains Joystick 1 X-axis value (0-4095)
+    // joystick_data.j1_y contains Joystick 1 Y-axis value (0-4095)
+    // joystick_data.j2_x contains Joystick 2 X-axis value (0-4095)
+    // joystick_data.j2_y contains Joystick 2 Y-axis value (0-4095)
+    // (Switch values are set to 0 since not used)
+    
     osDelay(100);
   }
   /* USER CODE END 5 */
