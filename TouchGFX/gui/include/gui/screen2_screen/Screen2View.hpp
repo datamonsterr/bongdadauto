@@ -11,7 +11,11 @@ public:
     virtual ~Screen2View() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+
+    //Display Time
+    void displayCounter(int newCount);
 protected:
+    touchgfx::Unicode::UnicodeChar timeCountBuffer[3];
 };
 
 #endif // SCREEN2VIEW_HPP
