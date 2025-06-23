@@ -15,6 +15,7 @@ public:
         model = m;
     }
     virtual void updateCounter(int newCount) {}
+    virtual void gameEnded() {}
 protected:
     Model* model;
 };

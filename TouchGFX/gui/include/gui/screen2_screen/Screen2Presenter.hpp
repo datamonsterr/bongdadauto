@@ -29,6 +29,12 @@ public:
 
     // Override from ModelListener to handle counter updates
     virtual void updateCounter(int newCount) override;
+    
+    // Override from ModelListener to handle game end
+    virtual void gameEnded() override;
+    
+    // Method to get model for accessing scores
+    Model* getModel() { return model; }
 
 private:
     Screen2Presenter();
