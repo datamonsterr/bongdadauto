@@ -30,6 +30,9 @@ public:
     // Method to start counting in the model
     void startGameCounting();
 
+    // Method to get model for accessing scores
+    Model* getModel() { return model; }
+
 private:
     Screen1Presenter();
 

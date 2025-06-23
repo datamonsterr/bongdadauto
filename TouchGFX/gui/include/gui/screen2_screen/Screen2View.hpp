@@ -29,8 +29,16 @@ public:
 
     //Display Time
     void displayCounter(int newCount);
+    
+    // Game management
+    void resetGame();
+    void updateScoreDisplay();
+    
 protected:
     touchgfx::Unicode::UnicodeChar timeCountBuffer[3];
+    touchgfx::Unicode::UnicodeChar scoreLeftBuffer[3];
+    touchgfx::Unicode::UnicodeChar scoreRightBuffer[3];
+    
     // Game constants
     static const int GROUND_LEVEL = 146;
     static const int LEFT_BOUND = 0;

@@ -1,4 +1,6 @@
 #include <gui/screen2_screen/Screen2View.hpp>
+#include <gui/screen2_screen/Screen2Presenter.hpp>
+#include <gui/model/Model.hpp>
 #include "cmsis_os.h"
 #include "joystick_data.h"
 #include <cmath>
@@ -20,6 +22,9 @@ void Screen2View::setupScreen()
     
     // Initialize counter display with starting value
     displayCounter(90);
+    
+    // Initialize score displays
+    updateScoreDisplay();
     
     // Initialize player positions based on their initial setup
     // From Screen2ViewBase.cpp: playerLeft is at (55, 146), playerRight is at (236, 146)
@@ -310,4 +315,56 @@ void Screen2View::displayCounter(int newCount)
     
     // Debug: Force immediate update to ensure display refresh
     timeCount.resizeToCurrentText();
+}
+
+void Screen2View::resetGame()
+{
+    // Reset player positions to initial positions
+    playerLeftX = 55;
+    playerLeftY = GROUND_LEVEL;
+    playerRightX = 236;
+    playerRightY = GROUND_LEVEL;
+    
+    // Reset physics variables
+    playerLeftVelocityY = 0.0f;
+    playerRightVelocityY = 0.0f;
+    playerLeftOnGround = true;
+    playerRightOnGround = true;
+    playerLeftJumping = false;
+    playerRightJumping = false;
+    
+    // Reset joystick states
+    prevJ1UpPressed = false;
+    prevJ2UpPressed = false;
+    
+    // Update player visual positions
+    playerLeft.setXY(playerLeftX, playerLeftY);
+    playerRight.setXY(playerRightX, playerRightY);
+    
+    // Invalidate the entire screen to refresh
+    invalidate();
+}
+
+void Screen2View::updateScoreDisplay()
+{
+    if (presenter)
+    {
+        // Get scores from model through presenter  
+        Model* model = static_cast<Screen2Presenter*>(presenter)->getModel();
+        if (model)
+        {
+            int leftScore = model->getLeftPlayerScore();
+            int rightScore = model->getRightPlayerScore();
+            
+            // Update left player score display
+            Unicode::snprintf(scoreLeftBuffer, 3, "%d", leftScore);
+            pointLeft.setWildcard(scoreLeftBuffer);
+            pointLeft.invalidate();
+            
+            // Update right player score display
+            Unicode::snprintf(scoreRightBuffer, 3, "%d", rightScore);
+            pointRight.setWildcard(scoreRightBuffer);
+            pointRight.invalidate();
+        }
+    }
 }

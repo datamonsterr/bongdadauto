@@ -20,11 +20,22 @@ public:
     void stopCounting();
     bool isCountingActive() const { return countingActive; }
     
+    // Game score management
+    int getLeftPlayerScore() const { return leftPlayerScore; }
+    int getRightPlayerScore() const { return rightPlayerScore; }
+    void incrementLeftPlayerScore() { leftPlayerScore++; }
+    void incrementRightPlayerScore() { rightPlayerScore++; }
+    void resetScores() { leftPlayerScore = 0; rightPlayerScore = 0; }
+    
 protected:
     ModelListener* modelListener;
     int tickCounter;
     int counter90to0;
     bool countingActive;
+    
+    // Game scores
+    int leftPlayerScore;
+    int rightPlayerScore;
 };
 
 #endif // MODEL_HPP

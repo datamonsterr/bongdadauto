@@ -18,7 +18,12 @@ public:
     // Method to handle joystick data from queue
     void handleJoystickData();
     
+    // Method to update welcome text with last game score
+    void updateWelcomeText();
+    
 protected:
+    touchgfx::Unicode::UnicodeChar welcomeBuffer1[10];
+    touchgfx::Unicode::UnicodeChar welcomeBuffer2[10];
 };
 
 #endif // SCREEN1VIEW_HPP

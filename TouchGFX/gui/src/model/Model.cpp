@@ -1,7 +1,7 @@
 #include <gui/model/Model.hpp>
 #include <gui/model/ModelListener.hpp>
 
-Model::Model() : modelListener(0), tickCounter(0), counter90to0(90), countingActive(false)
+Model::Model() : modelListener(0), tickCounter(0), counter90to0(90), countingActive(false), leftPlayerScore(0), rightPlayerScore(0)
 {
 
 }
@@ -13,20 +13,22 @@ void Model::tick()
 		return;
 		
 	tickCounter++;
-	// STM32F429 runs at ~24Hz, 24 ticks is 1 second
+	// STM32F429 runs at ~60Hz, 60 ticks is 1 second
 	if (tickCounter % 60 == 0)
 	{
 		// Tăng biến đếm và quay vòng
 		counter90to0--;
-		if (counter90to0 < 0)
-		{
-			counter90to0 = 90;
-		}
 
 		// Thông báo cho Presenter (nếu có) rằng giá trị đã thay đổi
-		if (modelListener)
+		if (modelListener && counter90to0 > 0)
 		{
 			modelListener->updateCounter(counter90to0);
+		}
+		else if (modelListener && counter90to0 == 0)
+		{
+			// Timer reached 0, notify game ended
+			modelListener->updateCounter(counter90to0);
+			modelListener->gameEnded();
 		}
 	}
 }
