@@ -164,8 +164,8 @@
           {
             "Type": "TextureMapper",
             "Name": "ball",
-            "X": 151,
-            "Y": 185,
+            "X": 153,
+            "Y": 105,
             "Width": 15,
             "Height": 15,
             "RenderingAlgorithm": "Nearest-neighbor",

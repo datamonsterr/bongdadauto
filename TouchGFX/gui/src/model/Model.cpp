@@ -1,7 +1,7 @@
 #include <gui/model/Model.hpp>
 #include <gui/model/ModelListener.hpp>
 
-Model::Model() : modelListener(0), tickCounter(0), counter90to0(90), countingActive(false), leftPlayerScore(0), rightPlayerScore(0)
+Model::Model() : modelListener(0), tickCounter(0), counter90to0(90), countingActive(false), leftPlayerScore(0), rightPlayerScore(0), gameCompleted(false)
 {
 
 }
@@ -26,7 +26,8 @@ void Model::tick()
 		}
 		else if (modelListener && counter90to0 == 0)
 		{
-			// Timer reached 0, notify game ended
+			// Timer reached 0, mark game as completed and notify game ended
+			gameCompleted = true;
 			modelListener->updateCounter(counter90to0);
 			modelListener->gameEnded();
 		}

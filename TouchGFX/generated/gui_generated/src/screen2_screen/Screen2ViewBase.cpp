@@ -57,7 +57,7 @@ Screen2ViewBase::Screen2ViewBase() :
     playerLeft.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
     add(playerLeft);
 
-    ball.setXY(151, 185);
+    ball.setXY(153, 105);
     ball.setBitmap(touchgfx::Bitmap(BITMAP_BONG_ID));
     ball.setWidth(15);
     ball.setHeight(15);

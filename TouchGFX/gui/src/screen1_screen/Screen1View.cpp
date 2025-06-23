@@ -26,6 +26,7 @@ void Screen1View::startNewGame()
     if (presenter && presenter->getModel())
     {
         presenter->getModel()->resetScores();
+        // Note: We don't reset gameCompleted flag here so previous score remains visible
     }
     
     // This method is called when startGameButton is clicked
@@ -40,13 +41,25 @@ void Screen1View::updateWelcomeText()
 {
     if (presenter && presenter->getModel())
     {
-        // Get last game scores
-        int leftScore = presenter->getModel()->getLeftPlayerScore();
-        int rightScore = presenter->getModel()->getRightPlayerScore();
+        Model* model = presenter->getModel();
         
-        // Format score as "X-Y"
-        Unicode::snprintf(welcomeBuffer1, 10, "%d", leftScore);
-        Unicode::snprintf(welcomeBuffer2, 10, "-%d", rightScore);
+        // Check if any game has been completed
+        if (model->hasGameBeenCompleted())
+        {
+            // Show last game scores
+            int leftScore = model->getLeftPlayerScore();
+            int rightScore = model->getRightPlayerScore();
+            
+            // Format score as "X-Y"
+            Unicode::snprintf(welcomeBuffer1, 10, "%d", leftScore);
+            Unicode::snprintf(welcomeBuffer2, 10, "  %d", rightScore);
+        }
+        else
+        {
+            // Show "WELCOME" for first time or when no game completed yet
+            Unicode::snprintf(welcomeBuffer1, 10, "WELCOME");
+            Unicode::snprintf(welcomeBuffer2, 10, "");
+        }
         
         // Update the text area with wildcards
         textArea1.setWildcard1(welcomeBuffer1);
@@ -55,9 +68,9 @@ void Screen1View::updateWelcomeText()
     }
     else
     {
-        // Fallback to "0-0" if no scores available
-        Unicode::snprintf(welcomeBuffer1, 10, "0");
-        Unicode::snprintf(welcomeBuffer2, 10, "  0");
+        // Fallback to "WELCOME" if no model available
+        Unicode::snprintf(welcomeBuffer1, 10, "WELCOME");
+        Unicode::snprintf(welcomeBuffer2, 10, "");
         
         textArea1.setWildcard1(welcomeBuffer1);
         textArea1.setWildcard2(welcomeBuffer2);

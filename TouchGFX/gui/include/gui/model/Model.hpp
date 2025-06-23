@@ -27,6 +27,10 @@ public:
     void incrementRightPlayerScore() { rightPlayerScore++; }
     void resetScores() { leftPlayerScore = 0; rightPlayerScore = 0; }
     
+    // Game completion tracking
+    bool hasGameBeenCompleted() const { return gameCompleted; }
+    void setGameCompleted(bool completed) { gameCompleted = completed; }
+    
 protected:
     ModelListener* modelListener;
     int tickCounter;
@@ -36,6 +40,9 @@ protected:
     // Game scores
     int leftPlayerScore;
     int rightPlayerScore;
+    
+    // Track if any game has been completed
+    bool gameCompleted;
 };
 
 #endif // MODEL_HPP
