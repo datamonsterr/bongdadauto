@@ -1,0 +1,8 @@
+../../TouchGFX/gui/include/gui/screen2_screen/Screen2Presenter.hpp:28:13:Screen2Presenter::~Screen2Presenter()	1
+C:/TouchGFXProjects/khoidaumoi/TouchGFX/gui/src/screen2_screen/Screen2Presenter.cpp:21:6:virtual void Screen2Presenter::deactivate()	1
+../../TouchGFX/gui/include/gui/screen2_screen/Screen2Presenter.hpp:28:13:virtual Screen2Presenter::~Screen2Presenter()	1
+C:/TouchGFXProjects/khoidaumoi/TouchGFX/gui/src/screen2_screen/Screen2Presenter.cpp:12:6:virtual void Screen2Presenter::activate()	2
+C:/TouchGFXProjects/khoidaumoi/TouchGFX/gui/src/screen2_screen/Screen2Presenter.cpp:26:6:virtual void Screen2Presenter::updateCounter(int)	1
+C:/TouchGFXProjects/khoidaumoi/TouchGFX/gui/src/screen2_screen/Screen2Presenter.cpp:32:6:virtual void Screen2Presenter::gameEnded()	2
+../../TouchGFX/gui/include/gui/screen2_screen/Screen2Presenter.hpp:28:13:virtual void* Screen2Presenter::_ZThn4_N16Screen2PresenterD1Ev()	1
+C:/TouchGFXProjects/khoidaumoi/TouchGFX/gui/src/screen2_screen/Screen2Presenter.cpp:6:1:Screen2Presenter::Screen2Presenter(Screen2View&)	1

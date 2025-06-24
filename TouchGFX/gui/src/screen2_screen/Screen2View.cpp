@@ -10,8 +10,8 @@
 extern osMessageQueueId_t joystickDataQueue;
 
 // Initialize static constants
-const float Screen2View::JUMP_VELOCITY = -15.0f; // Negative for upward movement
-const float Screen2View::GRAVITY = 0.8f;
+const float Screen2View::JUMP_VELOCITY = -10.0f; // Negative for upward movement (reduced for slower jump)
+const float Screen2View::GRAVITY = 0.5f; // Reduced for slower falling
 
 Screen2View::Screen2View()
 {
@@ -97,6 +97,12 @@ void Screen2View::handleTickEvent()
 
 void Screen2View::updatePhysics()
 {
+    // Skip player physics during goal cooldown
+    if (goalCooldown > 0)
+    {
+        return;
+    }
+    
     // Update playerLeft physics
     if (playerLeftJumping || !playerLeftOnGround)
     {
@@ -172,6 +178,12 @@ void Screen2View::updatePhysics()
 
 void Screen2View::handleJoystickData()
 {
+    // Skip joystick processing during goal cooldown
+    if (goalCooldown > 0)
+    {
+        return;
+    }
+    
     JoystickData_t joystick_data;
 
     // Try to get joystick data from queue (non-blocking)
@@ -427,8 +439,8 @@ void Screen2View::checkGoalDetection()
                 updateScoreDisplay();
             }
         }
-        // Reset ball position after goal
-        resetBallPosition();
+        // Reset ball and player positions after goal
+        resetAfterGoal();
         // Set cooldown to prevent multiple rapid detections
         goalCooldown = GOAL_COOLDOWN_FRAMES;
     }
@@ -447,8 +459,8 @@ void Screen2View::checkGoalDetection()
                 updateScoreDisplay();
             }
         }
-        // Reset ball position after goal
-        resetBallPosition();
+        // Reset ball and player positions after goal
+        resetAfterGoal();
         // Set cooldown to prevent multiple rapid detections
         goalCooldown = GOAL_COOLDOWN_FRAMES;
     }
@@ -468,8 +480,49 @@ void Screen2View::resetBallPosition()
     invalidateRect(ballRect);
 }
 
+void Screen2View::resetAfterGoal()
+{
+    // Reset ball to center position
+    ballX = BALL_INITIAL_X;
+    ballY = BALL_INITIAL_Y;
+    ballVelocityX = 0.0f;
+    ballVelocityY = 0.0f;
+    ball.setXY(ballX, ballY);
+    
+    // Reset player positions to initial positions
+    playerLeftX = 55;
+    playerLeftY = GROUND_LEVEL;
+    playerRightX = 236;
+    playerRightY = GROUND_LEVEL;
+    
+    // Reset physics variables
+    playerLeftVelocityY = 0.0f;
+    playerRightVelocityY = 0.0f;
+    playerLeftOnGround = true;
+    playerRightOnGround = true;
+    playerLeftJumping = false;
+    playerRightJumping = false;
+    
+    // Reset joystick states
+    prevJ1UpPressed = false;
+    prevJ2UpPressed = false;
+    
+    // Update player visual positions
+    playerLeft.setXY(playerLeftX, playerLeftY);
+    playerRight.setXY(playerRightX, playerRightY);
+    
+    // Invalidate the entire screen to refresh all elements
+    invalidate();
+}
+
 void Screen2View::updateBallPhysics()
 {
+    // Skip ball physics during goal cooldown (ball stays in air)
+    if (goalCooldown > 0)
+    {
+        return;
+    }
+    
     // Apply gravity to ball (always pulling downward)
     ballVelocityY += BALL_GRAVITY;
     
@@ -562,12 +615,12 @@ void Screen2View::checkPlayerBallCollision()
     if (isColliding(playerLeftX, playerLeftY, PLAYER_LEFT_WIDTH, PLAYER_LEFT_HEIGHT,
                     ballX, ballY, BALL_SIZE, BALL_SIZE))
     {
-        // Calculate shoot direction based on player position relative to ball
-        float shootX = (ballX - (playerLeftX + PLAYER_LEFT_WIDTH/2)) * 0.3f;
-        float shootY = (ballY - (playerLeftY + PLAYER_LEFT_HEIGHT/2)) * 0.3f;
+        // Calculate horizontal shoot direction based on player position relative to ball
+        float shootX = (ballX - (playerLeftX + PLAYER_LEFT_WIDTH/2)) * 0.2f;
         
-        // Add some upward force for more realistic ball movement
-        shootY -= 2.0f;
+        // Apply constant upward force
+        const float UPWARD_FORCE = -5.5f;  // Constant upward force
+        float shootY = UPWARD_FORCE;
         
         // Apply the shoot
         shoot(shootX, shootY);
@@ -577,12 +630,12 @@ void Screen2View::checkPlayerBallCollision()
     if (isColliding(playerRightX, playerRightY, PLAYER_RIGHT_WIDTH, PLAYER_RIGHT_HEIGHT,
                     ballX, ballY, BALL_SIZE, BALL_SIZE))
     {
-        // Calculate shoot direction based on player position relative to ball
-        float shootX = (ballX - (playerRightX + PLAYER_RIGHT_WIDTH/2)) * 0.3f;
-        float shootY = (ballY - (playerRightY + PLAYER_RIGHT_HEIGHT/2)) * 0.3f;
+        // Calculate horizontal shoot direction based on player position relative to ball
+        float shootX = (ballX - (playerRightX + PLAYER_RIGHT_WIDTH/2)) * 0.2f;
         
-        // Add some upward force for more realistic ball movement
-        shootY -= 2.0f;
+        // Apply constant upward force
+        const float UPWARD_FORCE = -5.5f;  // Constant upward force
+        float shootY = UPWARD_FORCE;
         
         // Apply the shoot
         shoot(shootX, shootY);

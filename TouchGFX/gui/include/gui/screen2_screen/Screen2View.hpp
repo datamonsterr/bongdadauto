@@ -37,6 +37,7 @@ public:
     // Ball and goal detection
     void checkGoalDetection();
     void resetBallPosition();
+    void resetAfterGoal();
     
     // Ball physics and collision
     void updateBallPhysics();
@@ -95,7 +96,7 @@ protected:
     
     // Goal detection cooldown to prevent multiple rapid detections
     int goalCooldown;
-    static const int GOAL_COOLDOWN_FRAMES = 60; // 1 second at 60fps
+    static const int GOAL_COOLDOWN_FRAMES = 120; // 2 seconds at 60fps
     
     // Movement speeds
     static const int MOVE_SPEED = 5;

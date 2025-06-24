@@ -1,0 +1,4 @@
+C:/TouchGFXProjects/khoidaumoi/TouchGFX/gui/src/model/Model.cpp:4:1:Model::Model()	1
+C:/TouchGFXProjects/khoidaumoi/TouchGFX/gui/src/model/Model.cpp:9:6:void Model::tick()	6
+C:/TouchGFXProjects/khoidaumoi/TouchGFX/gui/src/model/Model.cpp:37:6:void Model::startCounting()	2
+C:/TouchGFXProjects/khoidaumoi/TouchGFX/gui/src/model/Model.cpp:50:6:void Model::stopCounting()	1
