@@ -92,10 +92,10 @@
           {
             "Type": "TextArea",
             "Name": "timeCount",
-            "X": 144,
-            "Y": 16,
-            "Width": 27,
-            "Height": 16,
+            "X": 152,
+            "Y": 20,
+            "Width": 16,
+            "Height": 12,
             "TextId": "__SingleUse_M2AO",
             "TextRotation": "0",
             "Color": {
@@ -103,6 +103,7 @@
               "Green": 255,
               "Blue": 255
             },
+            "AutoSize": true,
             "Wildcard1": {
               "TextId": "__SingleUse_B0HF"
             }

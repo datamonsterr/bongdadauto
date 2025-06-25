@@ -1,8 +1,34 @@
-# STM32F429I_DISCO_REV_D01 TBS
+# Bong Da Auto - STM32F429I TouchGFX Project
 
-The default IDE is set to STM32CubeIDE, to change IDE open the STM32F429I_DISCO_REV_D01.ioc with STM32CubeMX and select from the supported IDEs (EWARM from version 8.50.9, MDK-ARM, and STM32CubeIDE). Supports flashing of the STM32F429I_DISCO_DEV_D01 board directly from TouchGFX Designer using GCC and STM32CubeProgrammer. Flashing the board requires STM32CubeProgrammer which can be downloaded from the ST webpage. 
+**Project from HUST ITE7 K67 Student**
 
-This TBS is configured for 320 x 240 pixels 16bpp screen resolution.  
+## Project Overview
 
-Performance testing can be done using the GPIO pins designated with the following signals: VSYNC_FREQ  - Pin PE2, RENDER_TIME - Pin PE3, FRAME_RATE  - Pin PE4, MCU_ACTIVE  - Pin PE5
- 
+This project is a graphical user interface (GUI) application designed for the STM32F429I Discovery board. It demonstrates embedded GUI development using modern touch interface technologies, creating an interactive dashboard system with multiple screens and visual elements.
+
+## Technologies Used
+
+- **Microcontroller**: STM32F429ZIT6 (ARM Cortex-M4 with FPU)
+- **Development Board**: STM32F429I-DISCO Rev D01
+- **GUI Framework**: TouchGFX - ST's graphics framework for embedded systems
+- **Real-Time OS**: FreeRTOS for task management and scheduling
+- **HAL**: STM32F4xx Hardware Abstraction Layer
+- **Display**: 320x240 pixels, 16bpp color depth
+- **Development Environment**: STM32CubeIDE (primary), with support for EWARM and MDK-ARM
+
+## Features
+
+- Multi-screen touch interface
+- Custom graphics and assets
+- Real-time performance monitoring capabilities
+- Hardware abstraction for easy portability
+- Optimized for embedded systems with limited resources
+
+## Hardware Requirements
+
+- STM32F429I-DISCO Rev D01 development board
+- STM32CubeProgrammer for flashing (available from ST website)
+
+## Video Demo
+
+[Project Demo Video](https://husteduvn-my.sharepoint.com/:v:/g/personal/cuong_hm226018_sis_hust_edu_vn/EY-Njzi6R9lHtqTswUPZGtQBsR722fO9ptT9Kvb7XjJchg?e=ZoBg7w)

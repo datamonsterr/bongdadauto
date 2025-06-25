@@ -23,10 +23,11 @@ Screen2ViewBase::Screen2ViewBase() :
     flexButton1.setPosition(0, 0, 32, 32);
     add(flexButton1);
 
-    timeCount.setPosition(144, 16, 27, 16);
+    timeCount.setXY(152, 20);
     timeCount.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     timeCount.setLinespacing(0);
     timeCount.setWildcard(touchgfx::TypedText(T___SINGLEUSE_B0HF).getText());
+    timeCount.resizeToCurrentText();
     timeCount.setTypedText(touchgfx::TypedText(T___SINGLEUSE_M2AO));
     add(timeCount);
 
